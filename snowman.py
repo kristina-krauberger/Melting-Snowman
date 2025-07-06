@@ -69,13 +69,14 @@ def play_game():
     mistakes = 0
     display_game_state(mistakes, secret_word, guessed_letters)
 
-    for i in range(len(secret_word)):
-        guess = input("Guess a letter: ").strip().lower()
-        guessed_letters.append(guess)
-        if guess not in secret_word:
-            mistakes += 1
-        display_game_state(mistakes, secret_word, guessed_letters)
-        print("You guessed:", guess)
+    while mistakes < 3:
+         guess = input("Guess a letter: ").strip().lower()
+         guessed_letters.append(guess)
+         if guess not in secret_word:
+             mistakes += 1
+         display_game_state(mistakes, secret_word, guessed_letters)
+         print("You guessed:", guess)
+
     if set(guessed_letters) == set(secret_word):
         print(f"You Win! The word was {secret_word}")
     else:
