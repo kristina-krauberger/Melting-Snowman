@@ -39,9 +39,10 @@ def play_game(get_input):
 
     guessed_letters = []
     mistakes = 0
+    has_won = False
     display_game_state(mistakes, secret_word, guessed_letters)
 
-    while mistakes < 3:
+    while mistakes < 3 and not has_won:
         guess = get_input()
         # Checks and appends guessed letter.
         if guess in guessed_letters:
@@ -56,8 +57,17 @@ def play_game(get_input):
         display_game_state(mistakes, secret_word, guessed_letters)
         print("You guessed:", guess)
 
-    if set(guessed_letters) == set(secret_word):
+        has_won = True
+
+        for letter in secret_word:
+            if letter not in guessed_letters:
+                has_won = False
+                break
+
+    if has_won:
         print(f"You Win! The word was {secret_word}")
     else:
         print(f"Game Over! The word was: {secret_word}")
+
+
 
