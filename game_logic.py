@@ -33,9 +33,7 @@ def play_game(get_input):
     - If the full word is guessed, the player wins.
     """
     secret_word = get_random_word()
-    print("Welcome to Snowman Meltdown!")
-    print("Secret word selected: " + secret_word)  # for testing, later remove this line
-
+    print("\n\033[94m=== Welcome to SNOWMAN MELTDOWN! ===\033[0m\n")
 
     guessed_letters = []
     mistakes = 0
@@ -68,11 +66,11 @@ def play_game(get_input):
 
     # Ends Game
     if has_won:
-        print(f"\033[92mYOU WIN! The word was {secret_word}\033[0m")
-        print("\033[92mYou have saved the snowman!\033[0m")
+        print(f"\033[92m***** YOU WIN! The word was {secret_word} *****\033[0m")
+        print("\033[92m***** You have saved the snowman! *****\033[0m")
     else:
-        print(f"\033[91mGAME OVER! The word was: {secret_word}\033[0m")
-        print("\033[91mYou have melted the snowman!\033[0m")
+        print(f"\033[91m***** GAME OVER! The word was: {secret_word} *****\033[0m")
+        print("\033[91m***** You have melted the snowman! *****\033[0m")
 
 
 
