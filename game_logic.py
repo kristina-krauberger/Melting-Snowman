@@ -44,9 +44,11 @@ def play_game(get_input):
 
     while mistakes < 3 and not has_won:
         guess = get_input()
-        # Checks and appends guessed letter.
+
+        # Checks duplicates and appends guessed letter.
         if guess in guessed_letters:
-            print("You already guessed that letter")
+            print("\033[91mYou already guessed that letter\033[0m")
+
         else:
             guessed_letters.append(guess)
 
@@ -57,17 +59,20 @@ def play_game(get_input):
         display_game_state(mistakes, secret_word, guessed_letters)
         print("You guessed:", guess)
 
+        # Checks if the word was guessed correctly.
         has_won = True
-
         for letter in secret_word:
             if letter not in guessed_letters:
                 has_won = False
                 break
 
+    # Ends Game
     if has_won:
-        print(f"You Win! The word was {secret_word}")
+        print(f"\033[92mYOU WIN! The word was {secret_word}\033[0m")
+        print("\033[92mYou have saved the snowman!\033[0m")
     else:
-        print(f"Game Over! The word was: {secret_word}")
+        print(f"\033[91mGAME OVER! The word was: {secret_word}\033[0m")
+        print("\033[91mYou have melted the snowman!\033[0m")
 
 
 
