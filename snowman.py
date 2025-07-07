@@ -3,12 +3,16 @@ from game_logic import play_game
 
 def get_input():
     while True:
-        user_input = input("Guess a letter: ").strip().lower()
+        try:
+            user_input = input("Guess a letter: ").strip().lower()
 
-        if not user_input.isalpha() or len(user_input) != 1:
-            print("Invalid input – please type **one single letter** (a-z).")
-        else:
+            if not user_input.isalpha() or len(user_input) != 1:
+                raise ValueError("Please type **one single letter** (a-z).")
+
             return user_input
+
+        except ValueError as e:
+            print(f"\033[91mInvalid input – {e}\033[0m")
 
 
 def main():
