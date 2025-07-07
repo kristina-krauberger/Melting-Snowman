@@ -1,20 +1,28 @@
 import random
 from ascii_art import STAGES
-#from snowman import user_input WARUM FALSCH?
 
 # List of secret words
 WORDS = ["python", "git", "github", "snowman", "meltdown"]
+RED = "\033[91m"
+GREEN = "\033[92m"
+BLUE = "\033[94m"
+RESET = "\033[0m"
+
 
 def get_random_word():
-    """Selects a random word from the list."""
+    """
+    Selects a random word from the list.
+    :return: str, random word from list
+    """
     return WORDS[random.randint(0, len(WORDS) - 1)]
 
 
 def display_game_state(mistakes, secret_word, guessed_letters):
     """Displays the snowman stage for the number of mistakes."""
-    # Display the snowman stage for the current number of mistakes.
+    # Displays the snowman stage for the current number of mistakes.
     print(STAGES[mistakes])
-    # Build a display version of the secret word.
+
+    # Builds a display version of the secret word.
     display_word = ""
     for letter in secret_word:
         if letter in guessed_letters:
@@ -33,7 +41,7 @@ def play_game(get_input):
     - If the full word is guessed, the player wins.
     """
     secret_word = get_random_word()
-    print("\n\033[94m=== Welcome to SNOWMAN MELTDOWN! ===\033[0m\n")
+    print(f"\n{BLUE}=== Welcome to SNOWMAN MELTDOWN! ==={RESET}\n")
 
     guessed_letters = []
     mistakes = 0
@@ -45,7 +53,7 @@ def play_game(get_input):
 
         # Checks duplicates and appends guessed letter.
         if guess in guessed_letters:
-            print("\033[91mYou already guessed that letter\033[0m")
+            print(f"{RED}You already guessed that letter{RESET}")
 
         else:
             guessed_letters.append(guess)
@@ -66,11 +74,11 @@ def play_game(get_input):
 
     # Ends Game
     if has_won:
-        print(f"\033[92m***** YOU WIN! The word was {secret_word} *****\033[0m")
-        print("\033[92m***** You have saved the snowman! *****\033[0m")
+        print(f"{GREEN}***** YOU WIN! The word was {secret_word} *****{RESET}")
+        print(f"{GREEN}***** You have saved the snowman! *****{RESET}")
     else:
-        print(f"\033[91m***** GAME OVER! The word was: {secret_word} *****\033[0m")
-        print("\033[91m***** You have melted the snowman! *****\033[0m")
+        print(f"{RED}***** GAME OVER! The word was: {secret_word} *****{RESET}")
+        print(f"{RED}***** You have melted the snowman! *****{RESET}")
 
 
 

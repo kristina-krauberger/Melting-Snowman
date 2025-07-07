@@ -1,7 +1,16 @@
 from game_logic import play_game
 
+RED = "\033[91m"
+BLUE = "\033[94m"
+RESET = "\033[0m"
+
 
 def get_input():
+    """
+    Prompts the user to input a single alphabetical letter.
+    Validates that the input is exactly one character (a-z).
+    :return: str: A valid single lowercase letter.
+    """
     while True:
         try:
             user_input = input("Guess a letter: ").strip().lower()
@@ -12,15 +21,15 @@ def get_input():
             return user_input
 
         except ValueError as e:
-            print(f"\033[91mInvalid input – {e}\033[0m")
+            print(f"{RED}Invalid input – {e}{RESET}")
 
 
 def main():
    while True:
-        play_game(get_input)    #Hier wir die Funktion get_input() übergeben nicht das Ergebnis
-        again = input("\nDo you want to play again? (y/n): ").strip().lower()
+        play_game(get_input)
+        again = input(f"\n{BLUE}Do you want to play again? (y/n): {RESET}").strip().lower()
         if again != "y":
-            print("Thanks for playing! Goodbye!️")
+            print(f"{BLUE}Thanks for playing! Goodbye!️{RESET}")
             break
 
 
