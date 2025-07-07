@@ -71,9 +71,17 @@ def play_game():
 
     while mistakes < 3:
          guess = input("Guess a letter: ").strip().lower()
-         guessed_letters.append(guess)
+
+         #checks and appends guessed letter
+         if guess in guessed_letters:
+             print("You already guessed that letter")
+         else:
+            guessed_letters.append(guess)
+
+        #checks the number of mistakes
          if guess not in secret_word:
              mistakes += 1
+
          display_game_state(mistakes, secret_word, guessed_letters)
          print("You guessed:", guess)
 
