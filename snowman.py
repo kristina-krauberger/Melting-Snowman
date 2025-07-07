@@ -16,7 +16,12 @@ def get_input():
 
 
 def main():
-    play_game(get_input)    #Hier wir die Funktion get_input() übergeben nicht das Ergebnis
+   while True:
+        play_game(get_input)    #Hier wir die Funktion get_input() übergeben nicht das Ergebnis
+        again = input("\nDo you want to play again? (y/n): ").strip().lower()
+        if again != "y":
+            print("Thanks for playing! Goodbye!️")
+            break
 
 
 if __name__ == "__main__":
